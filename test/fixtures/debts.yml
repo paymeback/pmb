@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  value: 1.5
+  description: MyText
+  debitor_id: 1
+  creditor_id: 1
+  cleared: false
+
+two:
+  value: 1.5
+  description: MyText
+  debitor_id: 1
+  creditor_id: 1
+  cleared: false

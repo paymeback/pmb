@@ -1,4 +1,6 @@
 class DebtsController < ApplicationController
+  #necessary for authorization, loads authorization for whole application
+  load_and_authorize_resource
   # GET /debts
   # GET /debts.json
   def index

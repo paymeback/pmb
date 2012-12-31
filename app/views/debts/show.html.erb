@@ -12,7 +12,7 @@
 
 <p>
   <b>Debitor:</b>
-  <%= Person.find(@debt.debitor_id) %>
+  <%= User.find(@debt.debitor_id).nickname %>
 </p>
 
 <p>

@@ -15,7 +15,7 @@ class DebtsController < ApplicationController
   # GET /debts/1
   # GET /debts/1.json
   def show
-    @debt = Debt.find(params[:id])
+    #@debt = Debt.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +36,7 @@ class DebtsController < ApplicationController
 
   # GET /debts/1/edit
   def edit
-    @debt = Debt.find(params[:id])
+    #@debt = Debt.find(params[:id])
   end
 
   # POST /debts
@@ -58,7 +58,7 @@ class DebtsController < ApplicationController
   # PUT /debts/1
   # PUT /debts/1.json
   def update
-    @debt = Debt.find(params[:id])
+    #@debt = Debt.find(params[:id])
 
     respond_to do |format|
       if @debt.update_attributes(params[:debt])

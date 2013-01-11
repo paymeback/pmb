@@ -15,15 +15,19 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
-  gem "less-rails" 
-  gem "twitter-bootstrap-rails" 
-  gem "devise"
+  
   gem 'uglifier', '>= 1.0.3'
   
 end
 
-gem 'jquery-rails'
+  gem 'jquery-rails'
+  gem 'libv8','~> 3.11.8.0'
+  gem 'therubyracer', :platforms => :ruby
+  gem "less-rails" 
+  gem "twitter-bootstrap-rails" 
+  gem "devise"
+  gem 'rolify'
+  gem 'activeadmin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

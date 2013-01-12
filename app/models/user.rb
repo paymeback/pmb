@@ -10,5 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :nickname
   # attr_accessible :title, :body
 
-  has_many :debts
+  #has_many :debts
+  has_many :creditor_debt, :class_name => 'Debt', :foreign_key => 'creditor_id'
+  has_many :debitor_debt, :class_name => 'Debt', :foreign_key => 'debitor_id'
 end

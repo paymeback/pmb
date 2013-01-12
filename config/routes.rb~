@@ -3,7 +3,7 @@ Paymeback::Application.routes.draw do
 
   devise_for :users
 
-  resources :debts, :usergroups
+  resources :debts, usergroups
 
   root :to => "debts#index"
   # The priority is based upon order of creation:

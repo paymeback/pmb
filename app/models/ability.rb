@@ -10,6 +10,7 @@ class Ability
 		  		can :read, Debt
 					can :create, Debt
 					can :update, Debt
+					can :get_file, Debt
 				end
 		else
 				can :read, :all

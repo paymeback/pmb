@@ -35,6 +35,11 @@
     <%= f.label :confirmed %><br />
     <%= f.check_box :confirmed %>
   </div>
+  <div class="field">
+    <p style="color:red">The following data types are allowed: JPG,JPEG,PNG,PDF</p>
+    <%= f.label :bill %><br />
+    <%= f.file_field :bill %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -29,7 +29,16 @@
   <b>Confirmed:</b>
   <%= @debt.confirmed %>
 </p>
-
-
+<p>
+  <b>Bill:</b>
+		<%=  if @debt.bill != nil
+			if @debt.bill_type == "application/pdf"
+				link_to 'Get_File' , url_for(:controller => "debts", :action => "get_file", :id => @debt.id) 
+			else
+				image_tag( url_for(:controller => "debts", :action => "get_file", :id => @debt.id),:size => "300x200")
+			end 
+	     	     end
+		%>
+</p>
 <%= link_to 'Edit', edit_debt_path(@debt) %> |
 <%= link_to 'Back', debts_path %>

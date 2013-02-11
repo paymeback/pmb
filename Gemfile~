@@ -21,8 +21,8 @@ group :assets do
 end
 
   gem 'jquery-rails'
-  gem 'libv8','~> 3.11.8.0'
-  gem 'therubyracer', :platforms => :ruby
+  gem 'libv8','~> 3.11.8.7'
+  gem 'therubyracer', '~> 0.11.3', :platforms => :ruby
   gem "less-rails" 
   gem "twitter-bootstrap-rails" 
   gem "devise"

@@ -12,12 +12,12 @@
 
 <p>
   <b>Debitor:</b>
-  <%= User.find(@debt.debitor_id).nickname %>
+  <%= @debt.debitor.nickname %>
 </p>
 
 <p>
   <b>Creditor:</b>
-  <%= @debt.creditor_id %>
+  <%= @debt.creditor.nickname %>
 </p>
 
 <p>

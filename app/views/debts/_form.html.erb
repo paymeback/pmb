@@ -19,11 +19,11 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
-  <div class="field">
-    <%= f.label :debitor_id %><br />
-    <%= f.number_field :debitor_id %>
-  </div>
    <div class="field">
+    <%= f.label :debitor_id %><br />
+    <%= f.collection_select :debitor_id, User.all, :id, :nickname, { selected: @debt.debitor_id}, { multiple: false } %>
+   </div>
+   <div class="field" style="display:none">
     <%= f.label :creditor_id %><br />
     <%= f.number_field :creditor_id, value: current_user.id %>
   </div>

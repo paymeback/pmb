@@ -7,10 +7,13 @@ class Ability
 				if user.has_role?(:admin)
 					can :manage,:all
 				else
-		  			can :read, Debt, :debitor_id => user.id, :creditor_id => user.id
+		  			can :read, Debt, :debitor_id => user.id
+					can :read, Debt, :creditor_id => user.id
 					can :create, Debt
-					can :update, Debt, :debitor_id => user.id, :creditor_id => user.id
-					can :get_file, Debt, :debitor_id => user.id, :creditor_id => user.id
+					can :update, Debt, :debitor_id => user.id
+					can :update, Debt, :creditor_id => user.id
+					can :get_file, Debt, :debitor_id => user.id
+					can :get_file, Debt, :creditor_id => user.id
 				end
 		else
 				can :index, Debt

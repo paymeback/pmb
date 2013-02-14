@@ -1,6 +1,6 @@
 Paymeback::Application.routes.draw do
   ActiveAdmin.routes(self)
-  get "debts/get_file" => "debts#get_file"
+  get "debts/:id/get_file" => "debts#get_file", :as => :get_file
   devise_for :users
 
   resources :debts, :usergroups

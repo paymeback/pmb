@@ -92,11 +92,11 @@ class DebtsController < ApplicationController
   end
 
   def get_file
-        f = Debt.find(params[:id])
-	if (f.bill_type == "application/pdf")
-		send_data(f.bill,:type => f.bill_type, :disposition => 'download')
+        @debt = Debt.find(params[:id])
+	if (@debt.bill_type == "application/pdf")
+		send_data(@debt.bill,:filename => "Debt_" + @debt.id.to_s,:type => @debt.bill_type, :disposition => 'download')
 	else
-		send_data(f.bill,:type => f.bill_type, :disposition => 'inline')
+		send_data(@debt.bill,:type => @debt.bill_type, :disposition => 'inline')
 	end
   end
 end

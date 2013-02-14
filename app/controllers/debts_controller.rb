@@ -63,7 +63,7 @@ class DebtsController < ApplicationController
   # PUT /debts/1.json
   def update
     @debt = Debt.find(params[:id])
-    if @debt != nil
+    if params[:debt][:bill] != nil
 	params[:debt][:bill_type] = params[:debt][:bill].content_type
     	params[:debt][:bill] = params[:debt][:bill].read
     	

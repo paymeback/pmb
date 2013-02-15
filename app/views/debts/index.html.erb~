@@ -1,0 +1,43 @@
+<!-- Checks if a user is logged in -->
+<% if current_user %>
+<h3>Debt Overview</h3>
+
+<table class="table table-hover table-condensed">
+  <tr>
+    <th>Value</th>
+    <th>Description</th>
+    <th>Debitor</th>
+    <th>Creditor</th>
+    <!--<th>Cleared</th>-->
+    <th>Confirmed</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+	
+	<% Debt.where('creditor_id = ? or debitor_id =?',current_user.id,current_user.id).each do |debt| %>
+
+  <tr>
+    <td><%= debt.value %></td>
+    <td><%= debt.description %></td>
+    <td><%= User.find(debt.debitor_id).nickname %></td>
+    <td><%= User.find(debt.creditor_id).nickname %></td>
+    <!--<td><%= debt.cleared %></td>-->
+    <td>		
+	<% if debt.confirmed %>
+    		<%= check_box_tag 'confirmed', true %>
+		<!--<%= check_box_tag 'confirmed', false %>-->
+	<%end%>
+    </td>
+    <!--<td><%= debt.confirmed %></td>-->
+    <td><%= link_to 'Show', debt %></td>
+    <td><%= link_to 'Edit', edit_debt_path(debt) %></td>	
+    <td><% if can?(:destroy, Debt) %>
+	<%= link_to 'Destroy', debt, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
+    </td>
+  <%end%>
+  </tr>
+</table>
+<%end%>
+<br />
+

@@ -1,2 +1,3 @@
 <h1>Usdollar#index</h1>
 <p>Find me in app/views/usdollar/index.html.erb</p>
+  <p><%= @dollar %></p>

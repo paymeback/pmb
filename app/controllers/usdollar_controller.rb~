@@ -4,10 +4,9 @@ require 'nokogiri'
 require 'open-uri'  
 	def index
 
-	doc = Nokogiri::XML(File.open('http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml'))
+	doc = Nokogiri::XML(open("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"))
 
-	@dollar = doc.xpath('//Cube[currency='USD']/rate').each do |e|
+	@dollar = doc.xpath('//Cube[currency="USD"]/rate').text
 
 	end
-  end
 end

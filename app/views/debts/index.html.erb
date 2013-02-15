@@ -20,6 +20,8 @@
 
   <tr>
     <td><%= debt.value %></td>
+
+    <td><%= @dollar %></td>
     <td><%= debt.description %></td>
     <td><%= User.find(debt.debitor_id).nickname %></td>
     <td><%= User.find(debt.creditor_id).nickname %></td>

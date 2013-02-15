@@ -4,7 +4,8 @@
 
 <table class="table table-hover table-condensed">
   <tr>
-    <th>Value</th>
+    <th>Value Euro</th>
+    <th>Value US-Dollar</th>
     <th>Description</th>
     <th>Debitor</th>
     <th>Creditor</th>
@@ -19,6 +20,8 @@
 
   <tr>
     <td><%= debt.value %></td>
+
+    <td><%= @dollar %></td>
     <td><%= debt.description %></td>
     <td><%= User.find(debt.debitor_id).nickname %></td>
     <td><%= User.find(debt.creditor_id).nickname %></td>

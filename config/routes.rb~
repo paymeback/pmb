@@ -1,9 +1,11 @@
 Paymeback::Application.routes.draw do
-  ActiveAdmin.routes(self)
+  get "usdollar/index"
 
+  ActiveAdmin.routes(self)
+  get "debts/:id/get_file" => "debts#get_file", :as => :get_file
   devise_for :users
 
-  resources :debts, usergroups
+  resources :debts, :usergroups, :usdollar
 
   root :to => "debts#index"
   # The priority is based upon order of creation:

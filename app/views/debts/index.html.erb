@@ -21,7 +21,7 @@
   <tr>
     <td><%= debt.value %></td>
 
-    <td></td>
+    <td><%= Exchange.find(1).value * debt.value %></td>
     <td><%= debt.description %></td>
     <td><%= User.find(debt.debitor_id).nickname %></td>
     <td><%= User.find(debt.creditor_id).nickname %></td>

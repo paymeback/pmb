@@ -3,7 +3,7 @@ class DebtsController < ApplicationController
   load_and_authorize_resource
   # GET /debts
   # GET /debts.json
-  @dollar = Usdollar.index
+
   def index
     @debts = Debt.all
 

@@ -1,5 +1,5 @@
 class Exchange < ActiveRecord::Base
   attr_accessible :name, :value
   
-	Exchange.create(name: "USD", value: 3,3)
+
 end

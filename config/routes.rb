@@ -3,8 +3,8 @@ Paymeback::Application.routes.draw do
 
   ActiveAdmin.routes(self)
   get "debts/:id/get_file" => "debts#get_file", :as => :get_file
-  get "index" => "usdollar#index"
-  get "usdollars/index" => "usdollar#index"
+  get "ezbupdater" => "ezbupdater#rouble"
+  get "ezbupdater/rouble" => "ezbupdater#rouble"
   devise_for :users
 
   resources :debts, :usergroups, :usdollar

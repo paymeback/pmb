@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-#Exchange.create(name: "USD", value: 3.3)
+Exchange.create(name: "USD", value: 3.3)
 
 
 #Create AdminUser
@@ -14,12 +14,12 @@ u.add_role :admin
 u.save
 
 #Create Users
-#User.create({"email" => "hans@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "hans"})
-#User.create({"email" => "dieter@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "dieter"})
-#User.create({"email" => "klaus@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "klaus"})
-#User.create({"email" => "chris@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "chris"})
-#User.create({"email" => "konrad@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "konrad"})
-#User.create({"email" => "peter@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "peter"})
+User.create({"email" => "hans@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "hans"})
+User.create({"email" => "dieter@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "dieter"})
+User.create({"email" => "klaus@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "klaus"})
+User.create({"email" => "chris@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "chris"})
+User.create({"email" => "konrad@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "konrad"})
+User.create({"email" => "peter@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "peter"})
 
 #Create Debts
 Debt.create(value: '632', description: 'testdata', debitor_id: '2', creditor_id: '3')

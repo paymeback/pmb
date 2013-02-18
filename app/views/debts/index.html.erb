@@ -26,9 +26,9 @@
     <td><%= debt.value %></td>
 
     <td><%= (Exchange.find(1).value * debt.value).round(2) %> (US-Dollar)<br>
-	<%= (Exchange.find(2).value * debt.value).round(2) % %> (Yen) <br>
-	<%= (Exchange.find(3).value * debt.value).round(2) % %> (Pound)<br>
-	<%= (Exchange.find(4).value * debt.value).round(2) % %> (Rubbel) <br>
+	<%= (Exchange.find(2).value * debt.value).round(2) %> (Yen) <br>
+	<%= (Exchange.find(3).value * debt.value).round(2) %> (Pound)<br>
+	<%= (Exchange.find(4).value * debt.value).round(2) %> (Rubbel) <br>
 </td>
     <td><%= debt.description %></td>
     <td><%= User.find(debt.debitor_id).nickname %></td>

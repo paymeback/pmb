@@ -9,7 +9,7 @@
 <table class="table table-hover table-condensed">
   <tr>
     <th>Value Euro</th>
-    <th>Value US-Dollar</th>
+    <th>Other Currency</th>
     <th>Description</th>
     <th>Debitor</th>
     <th>Creditor</th>
@@ -25,10 +25,10 @@
   <tr>
     <td><%= debt.value %></td>
 
-    <td><%= (Exchange.find(1).value * debt.value).round(2) %><br>
-	<%= Exchange.find(2).value * debt.value %> (Yen) <br>
-	<%= Exchange.find(3).value * debt.value %> (Pound)<br>
-	<%= Exchange.find(4).value * debt.value %> (Rubbel) <br>
+    <td><%= (Exchange.find(1).value * debt.value).round(2) %> (US-Dollar)<br>
+	<%= (Exchange.find(2).value * debt.value).round(2) % %> (Yen) <br>
+	<%= (Exchange.find(3).value * debt.value).round(2) % %> (Pound)<br>
+	<%= (Exchange.find(4).value * debt.value).round(2) % %> (Rubbel) <br>
 </td>
     <td><%= debt.description %></td>
     <td><%= User.find(debt.debitor_id).nickname %></td>

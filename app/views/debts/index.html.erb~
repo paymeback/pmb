@@ -3,7 +3,8 @@
 <h3>Gesamtschuldenliste:</h3>
 
 <!--Löschen der bishierigen Daten und ausführen der Methoden-->
-
+<%= killdoublesandcross %>
+<%= circle %>
 
 <table class="table table-hover table-condensed">
   <tr>
@@ -24,7 +25,11 @@
   <tr>
     <td><%= debt.value %></td>
 
-    <td><%= Exchange.find(1).value * debt.value %></td>
+    <td><%= (Exchange.find(1).value * debt.value).round(2) %><br>
+	<%= Exchange.find(2).value * debt.value %> (Yen) <br>
+	<%= Exchange.find(3).value * debt.value %> (Pound)<br>
+	<%= Exchange.find(4).value * debt.value %> (Rubbel) <br>
+</td>
     <td><%= debt.description %></td>
     <td><%= User.find(debt.debitor_id).nickname %></td>
     <td><%= User.find(debt.creditor_id).nickname %></td>
@@ -44,6 +49,41 @@
   <%end%>
   </tr>
 </table>
+
+<!-- Tabelle nach Auflösung der direkten Gleichheiten und Kreuzungen !!!!!!-->
+
+<h3>Zusammengefasst heißt das:</h3>
+<table class="table table-hover table-condensed">
+  <tr>
+    <th>Value</th>
+    <th>Debitor</th>
+    <th>Creditor</th>
+  </tr>
+	
+	<% Debtniceview.where('creditor_id = ? or debitor_id =?',current_user.id,current_user.id).each do |debtniceview| %>
+
+  <tr>
+    <td><%= debtniceview.value %></td>
+    <td><%= User.find(debtniceview.debitor_id).nickname %></td>
+    <td><%= User.find(debtniceview.creditor_id).nickname %></td>
+  <%end%>
+  </tr>
+</table>
+
+<!-- In Worten: !!!!!!-->
+<h3>Das heißt in Worten:</h3>
+<% Debtniceview.where('creditor_id = ? or debitor_id =?',current_user.id,current_user.id).each do |debtniceview| %>
+
+<%= User.find(debtniceview.debitor_id).nickname %> schuldet <%= User.find(debtniceview.creditor_id).nickname %> noch <%= debtniceview.value %> €.</br> 
+<%end%>
+
+<!-- In Worten nach Auflösung der Schuldenkreise (3er, 4er, 5er Ketten):-->
+<h3>Nach Auflösung der Schuldenkreise (3er, 4er, 5er Ketten) heißt das:</h3>
+<% Debtcycle.where('creditor_id = ? or debitor_id =?',current_user.id,current_user.id).each do |debtcycle| %>
+
+<%= User.find(debtcycle.debitor_id).nickname %> schuldet <%= User.find(debtcycle.creditor_id).nickname %> noch <%= debtcycle.value %> €.</br> 
+<%end%>
+
 
 
 <%end%>

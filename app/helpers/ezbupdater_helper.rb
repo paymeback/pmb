@@ -1,0 +1,2 @@
+module EzbupdaterHelper
+end

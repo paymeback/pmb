@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Exchange.create(name: "USD", value: 3.3)
+Exchange.create(name: "JPY", value: 124)
+Exchange.create(name: "GBP", value: 0.8)
+Exchange.create(name: "RUB", value: 40)
 
 
 #Create AdminUser

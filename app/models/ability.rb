@@ -13,7 +13,7 @@ class Ability
 					can :update, Debt, :debitor_id => user.id
 					can :update, Debt, :creditor_id => user.id
 					can :get_file, Debt, :debitor_id => user.id
-					can :get_file, Debt, :creditor_id => user.id
+					can :get_file, Debt, :creditor_id => user.id				
 				end
 		else
 				can :index, Debt

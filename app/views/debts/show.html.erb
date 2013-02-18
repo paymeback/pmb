@@ -34,7 +34,7 @@
 	<div>
 		<%=  if @debt.bill != nil
 			if @debt.bill_type == "application/pdf"
-				link_to 'Get_File_2', get_file_path(@debt)
+				link_to 'Get_File', get_file_path(@debt)
 			else
 				
 				image_tag(get_file_path(@debt),:size => "300x200")
@@ -45,5 +45,3 @@
 </p>
 <%= link_to 'Edit', edit_debt_path(@debt) %> |
 <%= link_to 'Back', debts_path %>
-<!-- link_to 'Get_File' , url_for(:controller => "debts", :action => "get_file", :id => @debt.id)
-image_tag( url_for(:controller => "debts", :action => "get_file", :id => @debt.id),:size => "300x200") -->

@@ -4,7 +4,7 @@
 
 <!--Löschen der bishierigen Daten und ausführen der Methoden-->
 <%= killdoublesandcross %>
-<%= triangle %>
+<%= circle %>
 
 <table class="table table-hover table-condensed">
   <tr>
@@ -73,8 +73,8 @@
 <%= User.find(debtniceview.debitor_id).nickname %> schuldet <%= User.find(debtniceview.creditor_id).nickname %> noch <%= debtniceview.value %> €.</br> 
 <%end%>
 
-<!-- In Worten nach Auflösung der Dreiecksbeziehungen: !!!!!!-->
-<h3>Nach Auflösung der Dreiecke heißt das:</h3>
+<!-- In Worten nach Auflösung der Schuldenkreise (3er, 4er, 5er Ketten):-->
+<h3>Nach Auflösung der Schuldenkreise (3er, 4er, 5er Ketten) heißt das:</h3>
 <% Debtcycle.where('creditor_id = ? or debitor_id =?',current_user.id,current_user.id).each do |debtcycle| %>
 
 <%= User.find(debtcycle.debitor_id).nickname %> schuldet <%= User.find(debtcycle.creditor_id).nickname %> noch <%= debtcycle.value %> €.</br> 

@@ -5,4 +5,45 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Exchange.create(name: "USD", value: 3-3)
+#Exchange.create(name: "USD", value: 3.3)
+
+
+#Create AdminUser
+u = User.create({"email" => "admin@pmb.de","password" => "adminpmb","password_confirmation" => "adminpmb","nickname" => "admin"})
+u.add_role :admin
+u.save
+
+#Create Users
+User.create({"email" => "hans@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "hans"})
+User.create({"email" => "dieter@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "dieter"})
+User.create({"email" => "klaus@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "klaus"})
+User.create({"email" => "chris@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "chris"})
+User.create({"email" => "konrad@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "konrad"})
+User.create({"email" => "peter@pmb.de","password" => "pmbpmb","password_confirmation" => "pmbpmb","nickname" => "peter"})
+
+#Create Debts
+Debt.create(value: '632', description: 'testdata', debitor_id: '2', creditor_id: '3')
+Debt.create(value: '313', description: 'testdata', debitor_id: '2', creditor_id: '4')
+Debt.create(value: '123', description: 'testdata', debitor_id: '2', creditor_id: '5')
+Debt.create(value: '13', description: 'testdata', debitor_id: '2', creditor_id: '6')
+Debt.create(value: '25', description: 'testdata', debitor_id: '2', creditor_id: '7')
+Debt.create(value: '31', description: 'testdata', debitor_id: '3', creditor_id: '2')
+Debt.create(value: '78', description: 'testdata', debitor_id: '3', creditor_id: '5')
+Debt.create(value: '12', description: 'testdata', debitor_id: '3', creditor_id: '2')
+Debt.create(value: '19', description: 'testdata', debitor_id: '3', creditor_id: '6')
+Debt.create(value: '26', description: 'testdata', debitor_id: '4', creditor_id: '3')
+Debt.create(value: '73', description: 'testdata', debitor_id: '4', creditor_id: '2')
+Debt.create(value: '723', description: 'testdata', debitor_id: '4', creditor_id: '2')
+Debt.create(value: '4,67', description: 'testdata', debitor_id: '5', creditor_id: '4')
+Debt.create(value: '2,54', description: 'testdata', debitor_id: '5', creditor_id: '2')
+Debt.create(value: '7,5', description: 'testdata', debitor_id: '5', creditor_id: '3')
+Debt.create(value: '87', description: 'testdata', debitor_id: '5', creditor_id: '4')
+Debt.create(value: '61', description: 'testdata', debitor_id: '6', creditor_id: '3')
+Debt.create(value: '367', description: 'testdata', debitor_id: '7', creditor_id: '6')
+Debt.create(value: '547', description: 'testdata', debitor_id: '7', creditor_id: '6')
+Debt.create(value: '54', description: 'testdata', debitor_id: '7', creditor_id: '4')
+Debt.create(value: '12', description: 'testdata', debitor_id: '7', creditor_id: '2')
+Debt.create(value: '6', description: 'testdata', debitor_id: '7', creditor_id: '3')
+
+#3.times do |i|
+#end

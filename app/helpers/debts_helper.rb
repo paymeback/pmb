@@ -123,8 +123,8 @@ module DebtsHelper
 		end
 	end
 
-	# Ab hier startet die Dreieckverrechnung
-	def triangle
+	# Ab hier startet die Dreieckverrechnung und Viereckverrechnung
+	def circle
 		data = Debtniceview.select("value, debitor_id, creditor_id")
 		valuearray = data.select('value').map{|elem|elem.value}
 		debitorarray = data.select('debitor_id').map{|elem|elem.debitor_id}
@@ -146,7 +146,7 @@ module DebtsHelper
 						# Bei true wird nun jeder Schuldner/Gläubiger gesuchtt
 							if debitor2 == debitorarray[y]
 							# Falls dieser auch Schulden/Guthaben beim Startdebitorhat
-							# liegt ein Dreieckvor
+							# liegt ein Dreieck vor
 								if debitor == creditorarray[y]
 									# Dreieck gefunden: 
 									# debitor schuldet creditor
@@ -157,11 +157,68 @@ module DebtsHelper
 										valuearray[x] -= valuearray[w]
 										valuearray[y] -= valuearray[w]
 										valuearray[w] = 0
-									end							
+									end	
+
+								# Kein Dreieck, aber vllt ein Viereck!						
+								else
+									debitor3 = creditorarray[y]
+									z = 0
+									while z < valuearray.size
+										if debitor3 == debitorarray[z]
+											# Falls dieser auch Schulden/Guthaben beim Startdebitorhat
+											# liegt ein Viereck vor
+											if debitor == creditorarray[z]
+												# Viereck gefunden: 
+												# debitor schuldet creditor
+												#	creditor schuldet debitor2
+												#	debitor2 schuldet debitor3
+												#	debitor3 schuldet debitor
+												# Der niedrigste Schuldenstand wird allen abgezogen
+												if valuearray[w] < valuearray[x] && valuearray[w] < valuearray[y] && valuearray[w] < valuearray[z]
+													valuearray[x] -= valuearray[w]
+													valuearray[y] -= valuearray[w]
+													valuearray[z] -= valuearray[w]
+													valuearray[w] = 0
+												end
+
+											# Kein Viereck, aber vllt ein Fünfeck
+											else
+												debitor4 = creditorarray[z]
+												a = 0
+												while a < valuearray.size
+													if debitor4 == debitorarray[a]
+														# Falls dieser auch Schulden/Guthaben beim Startdebitorhat
+														# liegt ein Fünfeck vor
+														if debitor == creditorarray[a]
+															# Viereck gefunden: 
+															# debitor schuldet creditor
+															#	creditor schuldet debitor2
+															#	debitor2 schuldet debitor3
+															#	debitor3 schuldet debitor4
+															#	debitor4 schuldet debitor
+															# Der niedrigste Schuldenstand wird allen abgezogen
+															if valuearray[w] < valuearray[x] && valuearray[w] < valuearray[y] && valuearray[w] < valuearray[z] && valuearray[w] < valuearray[a]
+																valuearray[x] -= valuearray[w]
+																valuearray[y] -= valuearray[w]
+																valuearray[z] -= valuearray[w]
+																valuearray[a] -= valuearray[w]
+																valuearray[w] = 0
+															end
+														end
+													end
+													a += 1
+												end
+											end
+											# Fünfeckende
+										end										
+										z += 1
+									end
+									# Viereckende
 								end
 							end
 							y += 1				
 						end
+						# Dreieckende
 					end
 					x += 1
 				end

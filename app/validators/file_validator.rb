@@ -1,7 +1,7 @@
 class FileValidator < ActiveModel::Validator
   def validate(record)
 	if record.bill != nil
-		if (record.bill.size/(1000*1000) > 2.megabytes)
+		if (record.bill.size/(1000.0*1000.0) > 2)
 			record.errors[:bill] << '- Only files up to 2 MB are allowed'
 		end 
 		c = record.bill_type

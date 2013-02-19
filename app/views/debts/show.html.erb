@@ -31,9 +31,7 @@
 </p>
 <p>
   <b>Bill:</b>
-	<div>
-		<%= link_to 'Get File', @debt.bill.url(:original,false) %>
-	</div>
+  <%= link_to 'Get File', @debt.bill.url(:download => true) %>
 </p>
 <%= link_to 'Edit', edit_debt_path(@debt) %> |
 <%= link_to 'Back', debts_path %>

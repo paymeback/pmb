@@ -44,11 +44,7 @@ class DebtsController < ApplicationController
   # POST /debts.json
   def create
     @debt = Debt.new(params[:debt])
-    
-    if @debt.bill != nil
-    	@debt.bill = params[:debt][:bill].read
-    	@debt.bill_type = params[:debt][:bill].content_type
-    end
+
     respond_to do |format|
       if @debt.save
         format.html { redirect_to @debt, notice: 'Debt was successfully created.' }
@@ -64,11 +60,7 @@ class DebtsController < ApplicationController
   # PUT /debts/1.json
   def update
     @debt = Debt.find(params[:id])
-    if params[:debt][:bill] != nil
-	params[:debt][:bill_type] = params[:debt][:bill].content_type
-    	params[:debt][:bill] = params[:debt][:bill].read
-    	
-    end
+
     respond_to do |format|
       if @debt.update_attributes(params[:debt])
         format.html { redirect_to @debt, notice: 'Debt was successfully updated.' }
@@ -90,14 +82,5 @@ class DebtsController < ApplicationController
       format.html { redirect_to debts_url }
       format.json { head :no_content }
     end
-  end
-
-  def get_file
-        @debt = Debt.find(params[:id])
-	if (@debt.bill_type == "application/pdf")
-		send_data(@debt.bill,:filename => "Debt_" + @debt.id.to_s,:type => @debt.bill_type, :disposition => 'download')
-	else
-		send_data(@debt.bill,:type => @debt.bill_type, :disposition => 'inline')
-	end
   end
 end

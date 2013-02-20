@@ -1,5 +1,19 @@
 require "spec_helper"
 # db:test:prepare before!
+# Thanks to a blog post, this method simulate the file_field
+# http://mewttt.blogspot.de/2011/04/simulating-filefield-in-rspec.html
+def mock_file(name)
+  file = File.new("#{Rails.root}/spec/fixtures/files/" + name,"r")
+  vfile = ActionDispatch::Http::UploadedFile.new(
+          :filename => name,
+          :type => "application/pdf",
+          :head => "Content-Disposition: form-data;
+                    name=\"bill\"; 
+                    filename=\"" + name + "\" 
+                    Content-Type: application/pdf\r\n",
+          :tempfile => file)
+  return vfile
+end 
 
 describe DebtsController do
 	Debt.delete_all
@@ -20,21 +34,21 @@ describe DebtsController do
 
 	    context 'with a valid file' do
 		it "creates a new debt with valid bill" do
-    			post :create, :debt => {}#insert code here
+    			post :create, :debt => {:value => 1,:description => "test1",:debitor_id => 1,:creditor_id => 2,:bill => mock_file('test_valid.pdf')}
 			response.should redirect_to Debt.last
 		end
             end
 
 	    context 'without a file' do
 		it "creates a new debt without a bill" do
-			post :create, :debt => {}#insert code here
+			post :create, :debt => {:value => 2,:description => "test2",:debitor_id => 1,:creditor_id => 2}
 			response.should redirect_to Debt.last
 		end
 	    end
 
 	    context 'with invalid file ' do
 		it "creates a new debt with invalid bill" do
-			post :create, :debt => {}#insert code here
+			post :create, :debt => {:value => 3,:description => "test3",:debitor_id => 1,:creditor_id => 2,:bill => mock_file('test_invalid.pdf')}
 			#response.should redirect_to Debt.last -> failed
 			#response.should_not redirect_to Debt.last -> passed
 			response.should render_template("new") 

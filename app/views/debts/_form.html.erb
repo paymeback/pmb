@@ -21,7 +21,7 @@
   </div>
    <div class="field">
     <%= f.label :debitor_id %><br />
-    <%= f.collection_select :debitor_id, User.all, :id, :nickname, { selected: @debt.debitor_id}, { multiple: false } %>
+    <%= f.collection_select :debitor_id, User.where("id !=" + current_user.id.to_s), :id, :nickname, { selected: @debt.debitor_id}, { multiple: false } %>
    </div>
    <div class="field" style="display:none">
     <%= f.label :creditor_id %><br />

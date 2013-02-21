@@ -81,13 +81,6 @@ ActiveRecord::Schema.define(:version => 20130221205521) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "person_groups", :force => true do |t|
-    t.integer  "person_id"
-    t.integer  "group_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -98,13 +91,6 @@ ActiveRecord::Schema.define(:version => 20130221205521) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
-
-  create_table "user_groups", :force => true do |t|
-    t.integer  "person_id"
-    t.integer  "group_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "usergroups", :force => true do |t|
     t.string   "name"

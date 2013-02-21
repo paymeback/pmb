@@ -12,6 +12,7 @@ class Ability
 					can :create, Debt
 					can :update, Debt, :debitor_id => user.id
 					can :update, Debt, :creditor_id => user.id
+					can :destroy, Debt, :creditor_id => user.id,:cleared => true
 				end
 		else
 				can :index, Debt

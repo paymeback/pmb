@@ -5,11 +5,13 @@ class DebtsController < ApplicationController
   # GET /debts.json
 
   def index
-    @debts = Debt.all
+    if current_user
+    	@debts = Debt.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @debts }
+    	respond_to do |format|
+      	format.html # index.html.erb
+      	format.json { render json: @debts }
+    	end
     end
   end
 

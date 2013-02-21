@@ -41,3 +41,4 @@ end
   gem 'nokogiri'
   gem 'paperclip', '~> 3.0'
   gem "paperclip-dropbox"
+#  gem 'will_paginate'

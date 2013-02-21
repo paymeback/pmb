@@ -34,4 +34,9 @@ Paymeback::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # disable logging for server assets (304 - not modified)
+  config.after_initialize do |app|
+    app.assets.logger = Logger.new('/dev/null')
+  end
 end

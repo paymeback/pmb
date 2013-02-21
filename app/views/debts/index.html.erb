@@ -20,7 +20,7 @@
     <th></th>
   </tr>
 	
-	<% Debt.where('creditor_id = ? or debitor_id =?',current_user.id,current_user.id).each do |debt| %>
+	<% Debt.where('creditor_id = ? and cleared = ? or debitor_id =? and cleared = ?',current_user.id,false,current_user.id,false).each do |debt| %>
 
   <tr>
     <td><%= debt.value %></td>

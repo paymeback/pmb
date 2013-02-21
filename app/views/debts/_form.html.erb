@@ -32,8 +32,8 @@
     <%= f.check_box :cleared %>
   </div>
  <div class="field">
-    <%= f.label :confirmed %><br />
-    <%= f.check_box :confirmed %>
+    <%= f.label :ex_date %><br />
+    <%= f.date_select(:ex_date,:start_year => Time.now.year,:order => [:day,:month,:year],:include_blank => true,:use_month_numbers => true,:default => 2.days.from_now) %>
   </div>
   <div class="field">
     <p style="color:red">The following data types are allowed: JPG,JPEG,PNG,PDF</p>

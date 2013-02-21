@@ -8,13 +8,13 @@
 
 <table class="table table-hover table-condensed">
   <tr>
-    <th>Value Euro</th>
-    <th>Other Currency</th>
+    <th>Value</th>
+    <th>Other Currancies</th>
     <th>Description</th>
     <th>Debitor</th>
     <th>Creditor</th>
     <!--<th>Cleared</th>-->
-    <th>Confirmed</th>
+    <th>Expiration Date</th>
     <th></th>
     <th></th>
     <th></th>
@@ -24,7 +24,6 @@
 
   <tr>
     <td><%= debt.value %></td>
-
     <td><%= (Exchange.find(1).value * debt.value).round(2) %> (US-Dollar)<br>
 	<%= (Exchange.find(2).value * debt.value).round(2) %> (Yen) <br>
 	<%= (Exchange.find(3).value * debt.value).round(2) %> (Pound)<br>
@@ -34,13 +33,7 @@
     <td><%= User.find(debt.debitor_id).nickname %></td>
     <td><%= User.find(debt.creditor_id).nickname %></td>
     <!--<td><%= debt.cleared %></td>-->
-    <td>		
-	<% if debt.confirmed %>
-    		<%= check_box_tag 'confirmed', true %>
-		<!--<%= check_box_tag 'confirmed', false %>-->
-	<%end%>
-    </td>
-    <!--<td><%= debt.confirmed %></td>-->
+    <td><%= if debt.ex_date != nil; debt.ex_date.strftime('%d.%m.%Y'); end %></td>
     <td><%= link_to 'Show', debt %></td>
     <td><%= link_to 'Edit', edit_debt_path(debt) %></td>	
     <td><% if can?(:destroy, Debt) %>

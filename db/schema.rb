@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221110632) do
+ActiveRecord::Schema.define(:version => 20130221205521) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -52,11 +52,11 @@ ActiveRecord::Schema.define(:version => 20130221110632) do
     t.boolean  "cleared",           :default => false
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
-    t.boolean  "confirmed"
     t.string   "bill_file_name"
     t.string   "bill_content_type"
     t.integer  "bill_file_size"
     t.datetime "bill_updated_at"
+    t.date     "ex_date"
   end
 
   create_table "exchanges", :force => true do |t|

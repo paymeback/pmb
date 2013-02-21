@@ -26,8 +26,8 @@
 </p>
 
 <p>
-  <b>Confirmed:</b>
-  <%= @debt.confirmed %>
+  <b>Expiration Date:</b>
+  <%= if @debt.ex_date != nil;@debt.ex_date.strftime('%d.%m.%Y');end %>
 </p>
 <p>
   <b>Bill:</b>

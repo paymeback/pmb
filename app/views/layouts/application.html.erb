@@ -45,7 +45,7 @@
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
 	      <% if current_user %>
-		<li><%= link_to 'Overview Debt', debts_path %></li>
+		<li><%= link_to 'Overview Debt', root_path %></li>
               	<li><%= link_to 'New Debt', new_debt_path %></li>
 			<% if current_user.has_role?(:admin)%>
 				<li><%= link_to 'Admin Panel', admin_dashboard_path %></li>

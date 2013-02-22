@@ -4,7 +4,7 @@ require 'nokogiri'
 require 'open-uri'  
 
 
-	def dollar
+	def self.dollar
 		doc = Nokogiri::XML(open("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"))
 		 
 		exchange = Exchange.first
@@ -13,7 +13,7 @@ require 'open-uri'
 		exchange.save
 	end
 
-	def yen
+	def self.yen
 		doc = Nokogiri::XML(open("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"))
 		 
 		exchange = Exchange.find(2)
@@ -22,7 +22,7 @@ require 'open-uri'
 		exchange.save
 	end
 
-	def pund
+	def self.pund
 		doc = Nokogiri::XML(open("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"))
 		 
 		exchange = Exchange.find(3)
@@ -32,7 +32,7 @@ require 'open-uri'
 	end
 
 
-	def rouble
+	def self.rouble
 		doc = Nokogiri::XML(open("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"))
 		 
 		exchange = Exchange.find(4)

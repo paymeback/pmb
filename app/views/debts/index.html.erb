@@ -9,7 +9,7 @@
 <table class="table table-hover table-condensed">
   <tr>
     <th>Value</th>
-    <th>Other Currancies</th>
+    <th>Other Currancies<br>Last update: <%= Exchange.find(1).updated_at.to_s(:short)%> (UTC) </th>
     <th>Description</th>
     <th>Debitor</th>
     <th>Creditor</th>

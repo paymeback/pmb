@@ -2,9 +2,9 @@ class EzbupdaterController < ApplicationController
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'  
-before_filter :index
 
-	def dollar
+
+	def self.dollar
 		doc = Nokogiri::XML(open("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"))
 		 
 		exchange = Exchange.first
@@ -13,7 +13,7 @@ before_filter :index
 		exchange.save
 	end
 
-	def yen
+	def self.yen
 		doc = Nokogiri::XML(open("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"))
 		 
 		exchange = Exchange.find(2)
@@ -22,7 +22,7 @@ before_filter :index
 		exchange.save
 	end
 
-	def pund
+	def self.pund
 		doc = Nokogiri::XML(open("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"))
 		 
 		exchange = Exchange.find(3)
@@ -32,7 +32,7 @@ before_filter :index
 	end
 
 
-	def rouble
+	def self.rouble
 		doc = Nokogiri::XML(open("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"))
 		 
 		exchange = Exchange.find(4)

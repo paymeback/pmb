@@ -35,7 +35,7 @@ end
   gem "less-rails" 
   gem "twitter-bootstrap-rails" 
   gem "devise"
-  gem 'whenever'
+  gem 'rufus-scheduler'
   gem 'rolify'
   gem 'activeadmin'
   gem 'nokogiri'

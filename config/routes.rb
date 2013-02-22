@@ -1,5 +1,5 @@
 Paymeback::Application.routes.draw do
-  get "usdollar/index"
+
 
   ActiveAdmin.routes(self)
   

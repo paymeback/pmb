@@ -20,7 +20,7 @@
     <th></th>
   </tr>
 	
-	<% Debt.where('creditor_id = ? and cleared = ? or debitor_id =? and cleared = ?',current_user.id,false,current_user.id,false).each do |debt| %>
+	<% Debt.where('cleared = ?',false).each do |debt| %>
 
   <tr>
     <td><%= debt.value %></td>
@@ -30,8 +30,8 @@
 	<%= (@rubbel * debt.value).round(2)  %> (Rubbel) <br>
 </td>
     <td><%= debt.description %></td>
-    <td><%= User.find(debt.debitor_id).nickname %></td>
-    <td><%= User.find(debt.creditor_id).nickname %></td>
+    <td><%= debt.debitor.nickname %></td>
+    <td><%= debt.creditor.nickname %></td>
     <!--<td><%= debt.cleared %></td>-->
     <td><%= if debt.ex_date != nil; debt.ex_date.strftime('%d.%m.%Y'); end %></td>
     <td><%= link_to 'Show', debt %></td>
@@ -53,7 +53,7 @@
     <th>Creditor</th>
   </tr>
 	
-	<% Debtniceview.where('creditor_id = ? or debitor_id =?',current_user.id,current_user.id).each do |debtniceview| %>
+	<% Debtniceview.where('').each do |debtniceview| %>
 
   <tr>
     <td><%= debtniceview.value %></td>
@@ -65,20 +65,25 @@
 
 <!-- In Worten: !!!!!!-->
 <h3>Das heißt in Worten:</h3>
-<% Debtniceview.where('creditor_id = ? or debitor_id =?',current_user.id,current_user.id).each do |debtniceview| %>
+<% Debtniceview.where('').each do |debtniceview| %>
 
 <%= User.find(debtniceview.debitor_id).nickname %> schuldet <%= User.find(debtniceview.creditor_id).nickname %> noch <%= debtniceview.value %> €.</br> 
 <%end%>
 
 <!-- In Worten nach Auflösung der Schuldenkreise (3er, 4er, 5er Ketten):-->
-<h3>Nach Auflösung der Schuldenkreise (3er, 4er, 5er Ketten) heißt das:</h3>
-<% Debtcycle.where('creditor_id = ? or debitor_id =?',current_user.id,current_user.id).each do |debtcycle| %>
+<h3>Nach Auflösung der Schuldenkreise heißt das:</h3>
+<% Debtcycle.where('').each do |debtcycle| %>
 
 <%= User.find(debtcycle.debitor_id).nickname %> schuldet <%= User.find(debtcycle.creditor_id).nickname %> noch <%= debtcycle.value %> €.</br> 
 <%end%>
 
-
-
+<h3>Für Dich heißt das:</h3>
+<% Debtcycle.where('debitor_id = ?', current_user.id).each do |debtcycle| %>
+Du schuldest <%= User.find(debtcycle.creditor_id).nickname %> noch <%= debtcycle.value %> €.</br> 
+<%end%>
+<% Debtcycle.where('creditor_id = ?', current_user.id).each do |debtcycle| %>
+<%= User.find(debtcycle.debitor_id).nickname %> schuldet Dir noch <%= debtcycle.value %> €.</br> 
+<%end%>
 <%end%>
 <br />
 

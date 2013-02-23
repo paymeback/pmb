@@ -13,9 +13,8 @@ group :development, :test do
  gem 'sqlite3'
  gem 'heroku'
  gem "rspec-rails", "~> 2.0"
+ gem 'capybara'
 end
-
-gem 'cancan'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -42,3 +41,4 @@ end
   gem 'paperclip', '~> 3.0'
   gem "paperclip-dropbox"
   gem 'will_paginate' , '~> 3.0.0'
+  gem 'cancan'

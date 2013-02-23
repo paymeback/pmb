@@ -5,7 +5,7 @@ class Ability
     # basic ability definition
 		if user.present?
 				if user.has_role?(:admin)
-					can :manage,:all
+					can :manage,:all			
 				else
 		  			can :read, Debt, :debitor_id => user.id
 					can :read, Debt, :creditor_id => user.id

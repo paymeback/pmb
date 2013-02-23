@@ -20,7 +20,7 @@
     <th></th>
   </tr>
 	
-	<% Debt.where('cleared = ?',false).each do |debt| %>
+	<% Debt.all.each do |debt| %>
 
   <tr>
     <td><%= debt.value %></td>

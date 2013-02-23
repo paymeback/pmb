@@ -7,7 +7,10 @@ class DebtsController < ApplicationController
   def index
     if current_user
     	@debts = Debt.all
-
+	@dollar = Exchange.find(1).value
+	@yen = Exchange.find(2).value
+	@pound = Exchange.find(3).value
+	@rubbel = Exchange.find(4).value
     	respond_to do |format|
       	format.html # index.html.erb
       	format.json { render json: @debts }

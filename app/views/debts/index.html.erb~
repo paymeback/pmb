@@ -22,7 +22,15 @@
 	
 	<% Debt.all.each do |debt| %>
 
-  <tr>
+  <% if  debt.ex_date != nil && debt.ex_date < Date.today%>
+<tr style="background-color:red">
+  <% elsif  debt.ex_date != nil && debt.ex_date < (Date.today-60) %>
+<tr style="background-color:yellow">
+<% else %>
+<tr style="background-color:green">
+  <%end%>
+
+
     <td><%= debt.value %></td>
     <td><%= debt.description %></td>
     <td><%= User.find(debt.debitor_id).nickname %></td>

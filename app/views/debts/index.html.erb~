@@ -9,7 +9,7 @@
 <table class="table table-hover table-condensed">
   <tr>
     <th>Value</th>
-    <th>Other Currancies<br>Last update: <%= Exchange.find(1).updated_at.to_s(:short)%> (UTC) </th>
+
     <th>Description</th>
     <th>Debitor</th>
     <th>Creditor</th>
@@ -20,18 +20,13 @@
     <th></th>
   </tr>
 	
-	<% Debt.where('cleared = ?',false).each do |debt| %>
+	<% Debt.all.each do |debt| %>
 
   <tr>
     <td><%= debt.value %></td>
-    <td><%= (@dollar * debt.value).round(2) %> (US-Dollar)<br>
-	<%= (@yen * debt.value).round(2)  %> (Yen) <br>
-	<%= (@pound * debt.value).round(2)  %> (Pound)<br>
-	<%= (@rubbel * debt.value).round(2)  %> (Rubbel) <br>
-</td>
     <td><%= debt.description %></td>
-    <td><%= debt.debitor.nickname %></td>
-    <td><%= debt.creditor.nickname %></td>
+    <td><%= User.find(debt.debitor_id).nickname %></td>
+    <td><%= User.find(debt.creditor_id).nickname %></td>
     <!--<td><%= debt.cleared %></td>-->
     <td><%= if debt.ex_date != nil; debt.ex_date.strftime('%d.%m.%Y'); end %></td>
     <td><%= link_to 'Show', debt %></td>

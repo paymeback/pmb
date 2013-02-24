@@ -7,10 +7,6 @@ class DebtsController < ApplicationController
   def index
     if current_user
     	@debts = Debt.all
-	@dollar = Exchange.find(1).value
-	@yen = Exchange.find(2).value
-	@pound = Exchange.find(3).value
-	@rubbel = Exchange.find(4).value
     	respond_to do |format|
       	format.html # index.html.erb
       	format.json { render json: @debts }
@@ -22,6 +18,11 @@ class DebtsController < ApplicationController
   # GET /debts/1.json
   def show
     #@debt = Debt.find(params[:id])
+	
+	@dollar = Exchange.find(1).value * Debt.find(params[:id]).value
+	@yen = Exchange.find(2).value * Debt.find(params[:id]).value
+	@pound = Exchange.find(3).value * Debt.find(params[:id]).value
+	@rubbel = Exchange.find(4).value * Debt.find(params[:id]).value
 
     respond_to do |format|
       format.html # show.html.erb

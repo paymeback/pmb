@@ -4,7 +4,14 @@
   <b>Value:</b>
   <%= @debt.value %>
 </p>
-
+<p>
+  <b>Value other currency </b><br>
+Last update: <%= Exchange.find(1).updated_at.to_s(:short)%> (UTC) <br>
+  <%= @dollar %> (US-Dollar)<br>
+	<%= @yen  %> (Yen) <br>
+	<%= @pound   %> (Pound)<br>
+	<%= @rubbel  %> (Rubbel) <br>
+</p>
 <p>
   <b>Description:</b>
   <%= @debt.description %>

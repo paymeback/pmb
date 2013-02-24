@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Value:</b>
+  <%= @debt.value %>
+</p>
+<p>
+  <b>Value other currency </b><br>
+Last update: <%= Exchange.find(1).updated_at.to_s(:short)%> (UTC) 
+  <%= @dollar %> (US-Dollar)<br>
+	<%= @yen  %> (Yen) <br>
+	<%= @pound   %> (Pound)<br>
+	<%= @rubbel  %> (Rubbel) <br>
+</p>
+<p>
+  <b>Description:</b>
+  <%= @debt.description %>
+</p>
+
+<p>
+  <b>Debitor:</b>
+  <%= @debt.debitor.nickname %>
+</p>
+
+<p>
+  <b>Creditor:</b>
+  <%= @debt.creditor.nickname %>
+</p>
+
+<p>
+  <b>Cleared:</b>
+  <%= @debt.cleared %>
+</p>
+
+<p>
+  <b>Expiration Date:</b>
+  <%= if @debt.ex_date != nil;@debt.ex_date.strftime('%d.%m.%Y');end %>
+</p>
+<p>
+  <b>Bill:</b>
+	<%= if @debt.bill_file_name != nil
+  		link_to 'Get File', @debt.bill.url(:download => true) 
+	    end 
+        %>
+</p>
+<%= link_to 'Edit', edit_debt_path(@debt) %> |
+<%= link_to 'Back', debts_path %>

@@ -29,7 +29,7 @@ module DebtsHelper
 
 	# in killdoubles werden alle Einträge, bei denen Schuldner 
 	# und Gläubiger gleich sind aussortiert
-	def killdoublesandcross
+	def self.killdoublesandcross
 		dellist
 		killthem
 		killthecross
@@ -127,7 +127,7 @@ module DebtsHelper
 	end
 
 	# Ab hier startet die Kreisverrechnung
-	def circle
+	def self.circle
 		data = Debtniceview.select("value, debitor_id, creditor_id")
 		$valuearray = data.select('value').map{|elem|elem.value}
 		$debitorarray = data.select('debitor_id').map{|elem|elem.debitor_id}
@@ -220,7 +220,5 @@ module DebtsHelper
 				u += 1
 			end
 		end
-
 	end
-		
 end

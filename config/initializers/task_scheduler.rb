@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'rufus/scheduler'  
 scheduler = Rufus::Scheduler.start_new
-scheduler.every("60s") do
+scheduler.every("6000s") do
   Exchange.dollar
   Exchange.yen
   Exchange.rouble

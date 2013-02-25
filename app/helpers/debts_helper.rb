@@ -2,12 +2,12 @@ module DebtsHelper
 	$cyclecounter = 0
 	$cyclemax = 3 #(1 = 3er Ketten, 2 = 4er Ketten ...)
 
-	def killoldandcreatenew
+	def self.killoldandcreatenew
 		dellist
 		createlist
 	end
 
-	def dellist
+	def self.dellist
 		x = Debtniceview.count
 		y=0
 		while y < x
@@ -17,7 +17,7 @@ module DebtsHelper
 		end
 	end
 
-	def dellist2
+	def self.dellist2
 		x = Debtcycle.count
 		y=0
 		while y < x
@@ -29,14 +29,14 @@ module DebtsHelper
 
 	# in killdoubles werden alle Einträge, bei denen Schuldner 
 	# und Gläubiger gleich sind aussortiert
-	def killdoublesandcross
+	def self.killdoublesandcross
 		dellist
 		killthem
 		killthecross
 	end
 
 	# in killthem werden  AA -> BB Beziehungen gekillt
-	def killthem
+	def self.killthem
 		# zunächst werden die Daten der aktuellen Debtniceview in Arrays gepackt
 		data = Debt.select("value, debitor_id, creditor_id")
 		valuearray = data.select('value').map{|elem|elem.value}
@@ -78,7 +78,7 @@ module DebtsHelper
 	end
 
 	# in killthecross werden  AB -> BA Beziehungen gekillt
-	def killthecross
+	def self.killthecross
 		# zunächst werden die Daten der aktuellen Debtniceview in Arrays gepackt
 		data = Debtniceview.select("value, debitor_id, creditor_id")
 		valuearray = data.select('value').map{|elem|elem.value}
@@ -127,7 +127,7 @@ module DebtsHelper
 	end
 
 	# Ab hier startet die Kreisverrechnung
-	def circle
+	def self.circle
 		data = Debtniceview.select("value, debitor_id, creditor_id")
 		$valuearray = data.select('value').map{|elem|elem.value}
 		$debitorarray = data.select('debitor_id').map{|elem|elem.debitor_id}
@@ -170,7 +170,7 @@ module DebtsHelper
 	end
 
 # Prüfung, ob in einer Situation ein Kreis vorliegt
-	def cyclestep(debitor, xyzarray)
+	def self.cyclestep(debitor, xyzarray)
 		debitor2 = $creditorarray[xyzarray[xyzarray.size-1]]
 		y = 0
 		while y < $valuearray.size
@@ -199,7 +199,7 @@ module DebtsHelper
 		end
 	end
 
-	def cyclevaluewriter(xyzarray)
+	def self.cyclevaluewriter(xyzarray)
 		# Zunächst wird der kleinste Wert ermittelt
 		v = 1
 		minvalue = $valuearray[xyzarray[0]]		

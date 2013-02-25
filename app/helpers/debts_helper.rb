@@ -38,7 +38,7 @@ module DebtsHelper
 	# in killthem werden  AA -> BB Beziehungen gekillt
 	def self.killthem
 		# zunächst werden die Daten der aktuellen Debtniceview in Arrays gepackt
-		data = Debt.select("value, debitor_id, creditor_id")
+		data =  Debt.select("value, debitor_id, creditor_id,cleared").where(:cleared => false)
 		valuearray = data.select('value').map{|elem|elem.value}
 		debitorarray = data.select('debitor_id').map{|elem|elem.debitor_id}
 		creditorarray = data.select('creditor_id').map{|elem|elem.creditor_id}

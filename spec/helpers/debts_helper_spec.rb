@@ -12,13 +12,6 @@ require 'spec_helper'
 # end
 
 describe DebtsHelper do
-	Exchange.create(name: "USD", value: 3.3)
-	Exchange.create(name: "JPY", value: 124)
-	Exchange.create(name: "GBP", value: 0.8)
-	Exchange.create(name: "RUB", value: 40)
-	Exchange.create(name: "BIT", value: 24)
-
-
 	valuearray = Debtniceview.select('value').map{|elem|elem.value}
 	i = 0
 	sum1 = 0
@@ -40,7 +33,6 @@ describe DebtsHelper do
 		i += 1
 	end
 	
-	Debt.last.delete
 	Debt.last.delete
 	Debt.last.delete
 	

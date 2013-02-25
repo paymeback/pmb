@@ -1,12 +1,16 @@
 require "spec_helper"
 
 describe 'clear debt process',:js => true do
+		
 		before(:all) do
+			Debt.delete_all
+			Exchange.delete_all
 			Exchange.create(name: "USD", value: 3.3)
 			Exchange.create(name: "JPY", value: 124)
 			Exchange.create(name: "GBP", value: 0.8)
 			Exchange.create(name: "RUB", value: 40)
-			Debt.create(value:"5.5",description:"test",creditor_id:1,debitor_id:2)
+			Exchange.create(name: "BIT", value: 25)
+			@debt = Debt.create(value:"5.5",description:"test",creditor_id:1,debitor_id:2)
 			User.create(email: "u1@pmb.dev", password:"test12",password_confirmation: "test12",nickname:"u1")
 			User.create(email: "u2@pmb.dev", password:"test12",password_confirmation: "test12",nickname:"u2")
 		end
@@ -20,11 +24,12 @@ describe 'clear debt process',:js => true do
 			sleep 2
 			
 			#set cleared for debt one to true
-			visit '/debts/1/edit'
+			visit '/debts/'+@debt.id.to_s+'/edit'
 			page.check('Cleared')
 			click_button 'Update Debt'
 			
 			#destroy cleared debt
+			sleep 10
 			visit '/'
 			click_link 'Destroy'
 			#sleep 2

@@ -20,11 +20,12 @@
     <th></th>
   </tr>
 	
-	<% Debt.all.each do |debt| %>
+	<%= will_paginate @debts %>
+	<% @debts.each do |debt| %>
 
   <% if  debt.ex_date != nil && debt.ex_date < Date.today%>
 <tr style="background-color:red">
-  <% elsif  debt.ex_date != nil && debt.ex_date < (Date.today-60) %>
+  <% elsif  debt.ex_date != nil && debt.ex_date < (Date.today+60) %>
 <tr style="background-color:yellow">
 <% else %>
 <tr style="background-color:green">
@@ -33,8 +34,8 @@
 
     <td><%= debt.value %></td>
     <td><%= debt.description %></td>
-    <td><%= User.find(debt.debitor_id).nickname %></td>
-    <td><%= User.find(debt.creditor_id).nickname %></td>
+    <td><%= debt.debitor.nickname %></td>
+    <td><%= debt.creditor.nickname %></td>
     <!--<td><%= debt.cleared %></td>-->
     <td><%= if debt.ex_date != nil; debt.ex_date.strftime('%d.%m.%Y'); end %></td>
     <td><%= link_to 'Show', debt %></td>

@@ -1,6 +1,6 @@
 module DebtsHelper
-	$cyclecounter = 0
-	$cyclemax = 3 #(1 = 3er Ketten, 2 = 4er Ketten ...)
+	@cyclecounter = 0
+	@cyclemax = 3 #(1 = 3er Ketten, 2 = 4er Ketten ...)
 
 	def self.killoldandcreatenew
 		dellist
@@ -186,12 +186,12 @@ module DebtsHelper
 					cyclevaluewriter(xyzarray)
 				else
 					# Kein Dreieck, aber vllt ein Viereck!
-					$cyclecounter += 1
-					if $cyclecounter < $cyclemax
+					@cyclecounter += 1
+					if @cyclecounter < @cyclemax
 						cyclestep(debitor, xyzarray)
 					# Selbstaufruf!
 					end	
-					$cyclecounter -= 1
+					@cyclecounter -= 1
 				end
 			end
 			xyzarray.delete_at(xyzarray.size-1)

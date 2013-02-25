@@ -44,32 +44,13 @@
 </table>
 
 <!-- Tabelle nach Auflösung der direkten Gleichheiten und Kreuzungen !!!!!!-->
-<input type="button" value="Rechnung aktualisieren" name="button1" onClick="<%= killdoublesandcross %>, <%= circle %>">
+<input type="button" value="Rechnung aktualisieren" name="button1" onClick="<%= DebtsHelper.killdoublesandcross %>, <%= DebtsHelper.circle %>">
 <!-- müsste eigentlich nicht method sondern action heißen: fier fehlt route-->
-<%= button_to "Rechnung aktualisieren1", :method => 'killdoublesandcross' %>
-<%= button_to "Rechnung aktualisieren1", :method => 'circle' %>
-
-
-<h3>Zusammengefasst heißt das:</h3>
-<table class="table table-hover table-condensed">
-  <tr>
-    <th>Value</th>
-    <th>Debitor</th>
-    <th>Creditor</th>
-  </tr>
-	
-	<% Debtniceview.where('').each do |debtniceview| %>
-
-  <tr>
-    <td><%= debtniceview.value %></td>
-    <td><%= User.find(debtniceview.debitor_id).nickname %></td>
-    <td><%= User.find(debtniceview.creditor_id).nickname %></td>
-  <%end%>
-  </tr>
-</table>
+<%= button_to "Rechnung aktualisieren1", :method => 'DebtsHelper.killdoublesandcross' %>
+<%= button_to "Rechnung aktualisieren1", :method => 'DebtsHelper.circle' %>
 
 <!-- In Worten: !!!!!!-->
-<h3>Das heißt in Worten:</h3>
+<h3>Nach Aufheben der Kreuzverbindungen schaut es so aus:</h3>
 <% Debtniceview.where('').each do |debtniceview| %>
 
 <%= User.find(debtniceview.debitor_id).nickname %> schuldet <%= User.find(debtniceview.creditor_id).nickname %> noch <%= debtniceview.value %> €.</br> 

@@ -19,7 +19,7 @@ describe DebtsHelper do
 	Exchange.create(name: "BIT", value: 24)
 
 
-	valuearray = Debtcycle.select('value').map{|elem|elem.value}
+	valuearray = Debtniceview.select('value').map{|elem|elem.value}
 	i = 0
 	sum1 = 0
 	while i < valuearray.size
@@ -28,14 +28,11 @@ describe DebtsHelper do
 	end
 	
 	Debt.create(value: '25', description: 'testdata', debitor_id: '2', creditor_id: '3')
-	Debt.create(value: '25', description: 'testdata', debitor_id: '3', creditor_id: '4')
-	Debt.create(value: '25', description: 'testdata', debitor_id: '4', creditor_id: '2')
+	Debt.create(value: '25', description: 'testdata', debitor_id: '3', creditor_id: '2')
 	
-	# Methoden aufrufen
 	DebtsHelper.killdoublesandcross
-	DebtsHelper.circle
 
-	valuearray = Debtcycle.select('value').map{|elem|elem.value}
+	valuearray = Debtniceview.select('value').map{|elem|elem.value}
 	i = 0
 	sum2 = 0
 	while i < valuearray.size
@@ -47,8 +44,7 @@ describe DebtsHelper do
 	Debt.last.delete
 	Debt.last.delete
 	
-
-	it "circle should work" do
+	it "Crosses will be killed!" do
 		sum1.should == sum2
   end	
 end

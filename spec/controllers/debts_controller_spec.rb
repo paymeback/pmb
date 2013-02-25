@@ -54,5 +54,18 @@ describe DebtsController do
 			response.should render_template("new") 
 		end
 	    end
+	
+	describe 'Debt #show' do
+		it 'calculate dollar value' do
+			@debt = Debt.create(value: '10', description: 'testdata', debitor_id: '2', creditor_id: '3')
+			Exchange.create(name: "USD", value: 2.0)
+			Exchange.create(name: "JPY", value: 124)
+			Exchange.create(name: "GBP", value: 0.8)
+			Exchange.create(name: "RUB", value: 40)
+			Exchange.create(name: "BIT", value: 24)
+ 			get :show, id:1
+			assigns(:dollar).should == 20 
+		end
+	end
 	end
 end

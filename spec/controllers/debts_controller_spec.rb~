@@ -55,7 +55,7 @@ describe DebtsController do
 		end
 	    end
 	
-	context 'calculate dollar value' do
+	describe 'Debt #show' do
 		it 'calculate dollar value' do
 			@debt = Debt.create(value: '10', description: 'testdata', debitor_id: '2', creditor_id: '3')
 			Exchange.create(name: "USD", value: 2.0)

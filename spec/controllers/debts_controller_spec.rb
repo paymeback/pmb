@@ -30,7 +30,7 @@ describe DebtsController do
   	end	
 
 	#test for creating debts in serveral ways
-	describe "POST #create" do
+	describe "Debt #create" do
 
 	    context 'with a valid file' do
 		it "creates a new debt with valid bill" do

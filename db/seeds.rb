@@ -9,6 +9,7 @@ Exchange.create(name: "USD", value: 3.3)
 Exchange.create(name: "JPY", value: 124)
 Exchange.create(name: "GBP", value: 0.8)
 Exchange.create(name: "RUB", value: 40)
+Exchange.create(name: "BIT", value: 24)
 
 
 #Create AdminUser

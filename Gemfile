@@ -40,5 +40,6 @@ end
   gem 'nokogiri'
   gem 'paperclip', '~> 3.0'
   gem "paperclip-dropbox"
+  gem 'mtgox'
   gem 'will_paginate' , '~> 3.0.0'
   gem 'cancan'

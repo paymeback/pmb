@@ -80,6 +80,8 @@ GEM
     excon (0.16.10)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    faraday (0.8.6)
+      multipart-post (~> 1.1)
     fastercsv (1.5.5)
     ffi (1.4.0)
     formtastic (2.2.1)
@@ -124,7 +126,11 @@ GEM
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
     mime-types (1.21)
+    mtgox (0.8.2)
+      faraday (~> 0.8, < 0.10)
+      multi_json (~> 1.0)
     multi_json (1.6.0)
+    multipart-post (1.1.5)
     netrc (0.7.7)
     nokogiri (1.5.6)
     orm_adapter (0.4.0)
@@ -238,6 +244,7 @@ DEPENDENCIES
   jquery-rails
   less-rails
   libv8 (~> 3.11.8.7)
+  mtgox
   nokogiri
   paperclip (~> 3.0)
   paperclip-dropbox

@@ -3,6 +3,7 @@ class Exchange < ActiveRecord::Base
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'  
+require 'mtgox'
 
 
 	def self.dollar
@@ -33,7 +34,7 @@ require 'open-uri'
 	end
 
 
-	def self-rouble
+	def self.rouble
 		doc = Nokogiri::XML(open("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"))
 		 
 		exchange = Exchange.find(4)
@@ -42,5 +43,9 @@ require 'open-uri'
 		exchange.save
 	end
 
-
+	def self.bitcoin
+		exchange = Exchange.find(5)
+		exchange.value = MtGox.ticker.sell
+		exchange.save
+	end
 end

@@ -6,6 +6,7 @@ scheduler.every("60m") do
   Exchange.yen
   Exchange.rouble
   Exchange.pund
+  Exchange.bitcoin
  
 end
 

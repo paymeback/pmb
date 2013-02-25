@@ -1,3 +1,5 @@
+require 'rubygems'
+
 class DebtsController < ApplicationController
   #necessary for authorization, loads authorization for whole application
   load_and_authorize_resource
@@ -19,10 +21,11 @@ class DebtsController < ApplicationController
   def show
     #@debt = Debt.find(params[:id])
 	
-	@dollar = Exchange.find(1).value * Debt.find(params[:id]).value
-	@yen = Exchange.find(2).value * Debt.find(params[:id]).value
-	@pound = Exchange.find(3).value * Debt.find(params[:id]).value
-	@rubbel = Exchange.find(4).value * Debt.find(params[:id]).value
+	@dollar = (Exchange.find(1).value * Debt.find(params[:id]).value).round(2)
+	@yen = (Exchange.find(2).value * Debt.find(params[:id]).value).round(2)
+	@pound = (Exchange.find(3).value * Debt.find(params[:id]).value).round(2)
+	@rubbel = (Exchange.find(4).value * Debt.find(params[:id]).value).round(2)
+	@bitcoin =  (Exchange.find(5).value * @dollar).round(2)
 
     respond_to do |format|
       format.html # show.html.erb

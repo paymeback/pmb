@@ -6,6 +6,12 @@ PayMeBack - In Detail
 ---
 Schulden haben eine Debitor und Kreditor. Eine Schuld kann __optional__ ein Fälligkeitsdatum, dieses darf nicht in der Vergangenheit liegen, oder ein Beleg als Anhang besitzen.Mögliche Anhänge sind PDF's,JPG's oder PNG's. 
 
+Es gilt folgendes _"Warnsystem"_ für die Schulden:
+- Grün, wenn die Schuld beglichen wurde
+- Gelb, wenn kein Fälligkeitsdatum vorhanden oder die Schuld noch nicht beglichen ist
+- Orange, wenn die Schuld in 7 Tagen beglichen werden muss
+- Rot, wenn das Fälligkeitsdatum vor dem aktuellen Datum liegt
+
 Weiterhin ist es mögich, sich die Schuld in anderen Währungen als Euro anzeigen zu lassen. Hierzu zählen folgende Währungen: __Dollar, Yen, Pfund, Rubel und Bitcoin__.
 
 Zudem werden Kreise und Kreuzverbindungen unter den Benutzern des Service aufgelöst.Sodass es sein kann, dass durch einen aufgelösten Kreis ein Benutzer keine Schuld mehr hat.

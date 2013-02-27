@@ -16,7 +16,7 @@ class DebtsController < ApplicationController
     end
   end
 
-  def mydebts2
+  def mydebts
     if current_user
     	@debts = Debt.paginate(:page => params[:page], :per_page => 10)
     	respond_to do |format|

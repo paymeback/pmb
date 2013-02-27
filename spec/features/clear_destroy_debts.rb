@@ -29,7 +29,7 @@ describe 'clear debt process',:js => true do
 			click_button 'Update Debt'
 			
 			#destroy cleared debt
-			sleep 10
+			sleep 5
 			visit '/'
 			click_link 'Destroy'
 			#sleep 2

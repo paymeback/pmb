@@ -16,6 +16,16 @@ class DebtsController < ApplicationController
     end
   end
 
+  def mydebts2
+    if current_user
+    	@debts = Debt.paginate(:page => params[:page], :per_page => 10)
+    	respond_to do |format|
+      	format.html # mydebts.html.erb
+      	format.json { render json: @debts }
+    	end
+    end
+  end
+
   # GET /debts/1
   # GET /debts/1.json
   def show

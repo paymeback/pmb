@@ -1,10 +1,12 @@
 Paymeback::Application.routes.draw do
 
 
+  get "debts/mydebts"
+
   ActiveAdmin.routes(self)
   
-  get "ezbupdater" => "ezbupdater#rouble"
-  get "ezbupdater/rouble" => "ezbupdater#rouble"
+  get "debts" => "debts#mydebts"
+  get "debts/mydebts" => "debts#mydebts"
   devise_for :users
 
   resources :debts, :usergroups, :usdollar

@@ -49,8 +49,6 @@
 <%= button_to "Rechnung aktualisieren1", :method => 'DebtsHelper.killdoublesandcross' %>
 <%= button_to "Rechnung aktualisieren1", :method => 'DebtsHelper.circle' %>
 
-
-
 <!-- In Worten: !!!!!!-->
 <h3>Nach Aufheben der Kreuzverbindungen schaut es so aus:</h3>
 <% Debtniceview.where('').each do |debtniceview| %>

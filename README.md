@@ -22,7 +22,7 @@ Tests
 ---
 Es existieren insgesamt 7 Tests. Aufgrund der Speicherung in der Dropbox ist es nicht möglich den Test "create debt with valid file" ein zweites Mal auszuführen. Er führt in dem Sinne zum gewünschten Ergbnis beim zweiten Mal, da er fehlschlägt aufgrund, dass die Datei bereits vorhanden ist. Dies ist dem Umstand geschuldet, dass ein einzigartiger Dateiname gewählt wird, der sich aus dem Namen des Models, der Id der Schuld und dem internen Namen des Anhangs zusammensetzt.
 
-##Folgende Tests werden angewendet:
+###Folgende Tests werden angewendet:
 - 3 Tests zum Erstellen von Schulden mit und ohne Anhängen. Dabei werden valide und nicht valide Dateien getestet. Diese befinden sich im Ordner "spec/fixtures".
 - 1 Integrationstest zur Überprüfung ob eine beglichene Schuld vom Kreditor gelöscht werden kann
 - 1 Helpers- Test zur Überprüfung ob die Auflösung von Kreisen und Kreuzverindungen funktioniert

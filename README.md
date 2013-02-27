@@ -4,7 +4,7 @@ Mit dem Service "PayMeBack" ist es möglich Schulden, die man z.B. zwischen Freu
 
 PayMeBack - In Detail
 ---
-Schulden haben eine Debitor und Kreditor. Eine Schuld kann __optional__ ein Fälligkeitsdatum, dieses darf nicht in der Vergangenheit liegen, oder ein Beleg als Anhang besitzen.Mögliche Anhänge sind PDF's,JPG's oder PNG's. 
+Schulden haben eine Debitor und Kreditor.Nur eingeloggte Benutzer (zu finden in den seeds) können jedeglich die Schuldenübersicht sehen und nutzen. Eine Schuld kann __optional__ ein Fälligkeitsdatum, dieses darf nicht in der Vergangenheit liegen, oder ein Beleg als Anhang besitzen.Mögliche Anhänge sind PDF's,JPG's oder PNG's. 
 
 Es gilt folgendes _"Warnsystem"_ für die Schulden:
 - Grün, wenn die Schuld beglichen wurde

@@ -36,7 +36,9 @@
 <td style="background-color:yellow">
   <%end%>
 
-<%= if debt.ex_date != nil; debt.ex_date.strftime('%d.%m.%Y'); end %></td>
+<% if debt.ex_date != nil  %> 
+ <%= debt.ex_date.strftime('%d.%m.%Y') %>
+ <% else  %>Not set<% end %></td>
     <td><%= link_to 'Show', debt %></td>
     <td><%= link_to 'Edit', edit_debt_path(debt) %></td>	
     <td><% if ((debt.creditor_id == current_user.id) and debt.cleared);if can?(:destroy, Debt)%>

@@ -1,6 +1,8 @@
 Paymeback::Application.routes.draw do
 
 
+  get "debts/mydebts"
+
   ActiveAdmin.routes(self)
   
   get "debts" => "debts#mydebts"

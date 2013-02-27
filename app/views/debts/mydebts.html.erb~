@@ -1,6 +1,6 @@
 <!-- Checks if a user is logged in -->
 <% if current_user %>
-<h3>My debts:</h3>
+<h3>My debts as creditor:</h3>
 
 <table class="table table-hover table-condensed">
   <tr>
@@ -16,8 +16,56 @@
     <th></th>
   </tr>
 	
-	<%= will_paginate @debts %>
+
 	<% @debts.where('creditor_id = ?', current_user.id).each do |debt| %>
+
+<tr>
+
+    <td><%= debt.value %></td>
+    <td><%= debt.description %></td>
+    <td><%= debt.debitor.nickname %></td>
+    <td><%= debt.creditor.nickname %></td>
+    <!--<td><%= debt.cleared %></td>-->  <% if debt.cleared %>
+<td style="background-color:green">
+  <% elsif  debt.ex_date != nil && debt.ex_date < Date.today%>
+<td style="background-color:red">
+  <% elsif  debt.ex_date != nil && debt.ex_date < (Date.today+7) %>
+<td style="background-color:orange">
+<% else %>
+<td style="background-color:yellow">
+  <%end%>
+
+<% if debt.ex_date != nil  %> 
+ <%= debt.ex_date.strftime('%d.%m.%Y') %>
+ <% else  %>Not set<% end %></td>
+    <td><%= link_to 'Show', debt %></td>
+    <td><%= link_to 'Edit', edit_debt_path(debt) %></td>	
+    <td><% if ((debt.creditor_id == current_user.id) and debt.cleared);if can?(:destroy, Debt)%>
+	<%= link_to 'Destroy', debt, method: :delete, data: { confirm: 'Are you sure?' }%><%end;end%>
+    </td>
+  <%end%>
+  </tr>
+</table>
+
+
+<h3>My debts as debitor:</h3>
+
+<table class="table table-hover table-condensed">
+  <tr>
+    <th>Value</th>
+
+    <th>Description</th>
+    <th>Debitor</th>
+    <th>Creditor</th>
+    <!--<th>Cleared</th>-->
+    <th>Expiration Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+	
+
+	<% @debts.where('debitor_id = ?', current_user.id).each do |debt| %>
 
 <tr>
 
@@ -45,6 +93,8 @@
   <%end%>
   </tr>
 </table>
+
+
 
 <h3>Für Dich heißt das:</h3>
 <% Debtcycle.where('debitor_id = ?', current_user.id).each do |debtcycle| %>

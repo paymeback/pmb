@@ -19,21 +19,26 @@
 	<%= will_paginate @debts %>
 	<% @debts.each do |debt| %>
 
-  <% if  debt.ex_date != nil && debt.ex_date < Date.today%>
-<tr style="background-color:red">
-  <% elsif  debt.ex_date != nil && debt.ex_date < (Date.today+60) %>
-<tr style="background-color:yellow">
-<% else %>
-<tr style="background-color:green">
-  <%end%>
-
+<tr>
 
     <td><%= debt.value %></td>
     <td><%= debt.description %></td>
     <td><%= debt.debitor.nickname %></td>
     <td><%= debt.creditor.nickname %></td>
     <!--<td><%= debt.cleared %></td>-->
-    <td><%= if debt.ex_date != nil; debt.ex_date.strftime('%d.%m.%Y'); end %></td>
+  <% if debt.cleared %>
+<td style="background-color:green">
+  <% elsif  debt.ex_date != nil && debt.ex_date < Date.today%>
+<td style="background-color:red">
+  <% elsif  debt.ex_date != nil && debt.ex_date < (Date.today+7) %>
+<td style="background-color:orange">
+<% else %>
+<td style="background-color:yellow">
+  <%end%>
+
+<% if debt.ex_date != nil  %> 
+ <%= debt.ex_date.strftime('%d.%m.%Y') %
+ <% else  %>Not set<% end %></td>
     <td><%= link_to 'Show', debt %></td>
     <td><%= link_to 'Edit', edit_debt_path(debt) %></td>	
     <td><% if ((debt.creditor_id == current_user.id) and debt.cleared);if can?(:destroy, Debt)%>

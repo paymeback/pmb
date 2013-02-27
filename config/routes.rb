@@ -5,8 +5,7 @@ Paymeback::Application.routes.draw do
 
   ActiveAdmin.routes(self)
   
-  get "debts" => "debts#mydebts"
-  get "debts/mydebts" => "debts#mydebts"
+
   devise_for :users
 
   resources :debts, :usergroups, :usdollar

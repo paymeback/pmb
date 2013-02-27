@@ -1,6 +1,6 @@
 <!-- Checks if a user is logged in -->
 <% if current_user %>
-<h3>Gesamtschuldenliste:</h3>
+<h3>Total debt list:</h3>
 
 <table class="table table-hover table-condensed">
   <tr>
@@ -37,7 +37,7 @@
   <%end%>
 
 <% if debt.ex_date != nil  %> 
- <%= debt.ex_date.strftime('%d.%m.%Y') %
+ <%= debt.ex_date.strftime('%d.%m.%Y') %>
  <% else  %>Not set<% end %></td>
     <td><%= link_to 'Show', debt %></td>
     <td><%= link_to 'Edit', edit_debt_path(debt) %></td>	
@@ -48,32 +48,29 @@
   </tr>
 </table>
 
-<!-- Tabelle nach Auflösung der direkten Gleichheiten und Kreuzungen !!!!!!-->
-<input type="button" value="Rechnung aktualisieren" name="button1" onClick="<%= DebtsHelper.killdoublesandcross %>, <%= DebtsHelper.circle %>">
-<!-- müsste eigentlich nicht method sondern action heißen: fier fehlt route-->
-<%= button_to "Rechnung aktualisieren1", :method => 'DebtsHelper.killdoublesandcross' %>
-<%= button_to "Rechnung aktualisieren1", :method => 'DebtsHelper.circle' %>
+<!-- Calling the allocation methods-->
+<%= DebtsHelper.killdoublesandcross %>
+<%= DebtsHelper.circle %>
 
-<!-- In Worten: !!!!!!-->
-<h3>Nach Aufheben der Kreuzverbindungen schaut es so aus:</h3>
+<!-- Table after solving direct equalities and crossings-->
+<h3>Here's the table after solving direct equalities and crossing:</h3>
 <% Debtniceview.where('').each do |debtniceview| %>
-
-<%= User.find(debtniceview.debitor_id).nickname %> schuldet <%= User.find(debtniceview.creditor_id).nickname %> noch <%= debtniceview.value %> €.</br> 
+<%= User.find(debtniceview.debitor_id).nickname %> owes <%= User.find(debtniceview.creditor_id).nickname %> <%= debtniceview.value %> €.</br> 
 <%end%>
 
-<!-- In Worten nach Auflösung der Schuldenkreise (3er, 4er, 5er Ketten):-->
-<h3>Nach Auflösung der Schuldenkreise heißt das:</h3>
+<!-- Table after resolution of debt circles.-->
+<h3>Table after resolution of debt circles:</h3>
 <% Debtcycle.where('').each do |debtcycle| %>
 
-<%= User.find(debtcycle.debitor_id).nickname %> schuldet <%= User.find(debtcycle.creditor_id).nickname %> noch <%= debtcycle.value %> €.</br> 
+<%= User.find(debtcycle.debitor_id).nickname %> owes <%= User.find(debtcycle.creditor_id).nickname %> <%= debtcycle.value %> €.</br> 
 <%end%>
 
-<h3>Für Dich heißt das:</h3>
+<h3>That means for you:</h3>
 <% Debtcycle.where('debitor_id = ?', current_user.id).each do |debtcycle| %>
-Du schuldest <%= User.find(debtcycle.creditor_id).nickname %> noch <%= debtcycle.value %> €.</br> 
+You owe <%= User.find(debtcycle.creditor_id).nickname %> <%= debtcycle.value %> €.</br> 
 <%end%>
 <% Debtcycle.where('creditor_id = ?', current_user.id).each do |debtcycle| %>
-<%= User.find(debtcycle.debitor_id).nickname %> schuldet Dir noch <%= debtcycle.value %> €.</br> 
+<%= User.find(debtcycle.debitor_id).nickname %> owes you <%= debtcycle.value %> €.</br> 
 <%end%>
 <%end%>
 <br />

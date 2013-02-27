@@ -6,7 +6,7 @@ class Debt < ActiveRecord::Base
   alias_attribute :expiration_date,:ex_date
     attr_accessible :ex_date,:bill,:bill_file_name,:bill_content_type,:bill_file_size,:bill_updated_at,:cleared, :creditor_id, :debitor_id, :description, :value, :confirmed
 
-  has_attached_file :bill, :storage => :dropbox,:dropbox_credentials => "#{Rails.root}/config/dropbox.yml",:dropbox_options => {:path => proc{"#{id}_#{bill.original_filename}_" + DateTime.now.strftime("%Y-%m-%d_%H-%M-%S").to_s + ' '}}
+  has_attached_file :bill, :storage => :dropbox,:dropbox_credentials => "#{Rails.root}/config/dropbox.yml",:dropbox_options => {:unique_filename => true}
 
   validates :debitor_id,:value,:description, :presence => true
   validates_attachment :bill, :content_type => { :content_type => ["image/jpg","image/png","image/jpeg","application/pdf"] },

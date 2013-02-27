@@ -239,6 +239,7 @@ DEPENDENCIES
   cancan
   capybara
   coffee-rails (~> 3.2.1)
+  coffee-script-source (~> 1.4.0)
   devise
   heroku
   jquery-rails

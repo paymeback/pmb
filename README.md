@@ -24,6 +24,9 @@ To get it up and running
 
 That's all ;).
 
+###Gem Notes
+Aufgrund von Problem auf 64 Bit Systemen und Installationsproblemen mit älteren Versionen des Gem's libv8 für twitter-bootstrap, wird dieses ab der Version >=3.11.8.7 und das Gem rubyracer ab Version >=0.11.3 verwendet. 
+
 Tests
 ---
 Es existieren insgesamt _6_ Tests. Aufgrund der Speicherung in der Dropbox ist es nicht möglich den Test "create debt with valid file" ein zweites Mal auszuführen. Er führt in dem Sinne zum gewünschten Ergbnis beim zweiten Mal, da er fehlschlägt aufgrund, dass die Datei bereits vorhanden ist. Dies ist dem Umstand geschuldet, dass ein einzigartiger Dateiname gewählt wird, der sich aus dem Namen des Models, der Id der Schuld und dem internen Namen des Anhangs zusammensetzt.

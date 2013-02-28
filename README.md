@@ -8,11 +8,11 @@ Schulden haben eine Debitor und Kreditor.Nur eingeloggte Benutzer (zu finden in 
 
 Es gilt folgendes _"Warnsystem"_ für die Schulden:
 - Grün, wenn die Schuld beglichen wurde
-- Gelb, wenn kein Fälligkeitsdatum vorhanden oder die Schuld noch nicht beglichen ist
+- Gelb, wenn kein Fälligkeitsdatum vorhanden und die Schuld noch nicht beglichen ist
 - Orange, wenn die Schuld in 7 Tagen beglichen werden muss
 - Rot, wenn das Fälligkeitsdatum vor dem aktuellen Datum liegt
 
-Weiterhin ist es mögich, sich die Schuld in anderen Währungen als Euro anzeigen zu lassen. Hierzu zählen folgende Währungen: __Dollar, Yen, Pfund, Rubel und Bitcoin__.
+Weiterhin ist es mögich, sich die Schuld in anderen Währungen als Euro anzeigen zu lassen. Hierzu zählen folgende Währungen: __Dollar, Yen, Pfund, Rubel und Bitcoin__. Die Währungen Dollar, Yen, Pfund und Rubel werden aus einer von der EZB bereitgestellten XML-Datei ausgelesen. Der aktuelle Umrechnungskurs für Bitcoin wird von der MtGox Exchange bereitgestellt. 
 
 Zudem werden Kreise und Kreuzverbindungen unter den Benutzern des Service aufgelöst.Sodass es sein kann, dass durch einen aufgelösten Kreis ein Benutzer keine Schuld mehr hat.
 
